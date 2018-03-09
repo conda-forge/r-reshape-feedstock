@@ -1,4 +1,4 @@
-{% set version = '0.8.6' %}
+{% set version = "0.8.7" %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,7 +12,7 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/reshape_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/reshape/reshape_{{ version }}.tar.gz
-  sha256: d89db98ea1025e38d59daeff965dd8174bbb94a961cb966a83760ac1a87a36b8
+  sha256: 2fa6c87d1e89f182e51bc5a4fcda3d42d83b8fb4474ca525fa7a8db5081f3992
 
 build:
   number: 0
