@@ -1,5 +1,4 @@
-{% set version = "0.8.7" %}
-
+{% set version = '0.8.7' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,43 +9,45 @@ package:
 source:
   fn: reshape_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/reshape_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/reshape/reshape_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/reshape_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/reshape/reshape_{{ version }}.tar.gz
   sha256: 2fa6c87d1e89f182e51bc5a4fcda3d42d83b8fb4474ca525fa7a8db5081f3992
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 2
   skip: true  # [win32]
-
   rpaths:
     - lib/R/lib/
     - lib/
+
 requirements:
   build:
-    - posix                # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('c') }}        # [not win]
+    - {{native}}toolchain        # [win]
   host:
     - r-base
     - r-plyr
-
   run:
     - r-base
     - r-plyr
 
 test:
   commands:
-    - $R -e "library('reshape')"  # [not win]
+    - $R -e "library('reshape')"           # [not win]
     - "\"%R%\" -e \"library('reshape')\""  # [win]
 
 about:
   home: http://had.co.nz/reshape
   license: MIT
-  summary: Flexibly restructure and aggregate data using just melt() and cast().
+  summary: 'Flexibly restructure and aggregate data using  just two functions: melt and cast.'
   license_family: MIT
 
 extra:
   recipe-maintainers:
     - johanneskoester
     - bgruening
+    - daler
+    - jdblischak
+    - cbrueffer
+    - dbast
