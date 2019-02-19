@@ -1,4 +1,4 @@
-{% set version = '0.8.7' %}
+{% set version = "0.8.8" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -11,11 +11,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/reshape_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/reshape/reshape_{{ version }}.tar.gz
-  sha256: 2fa6c87d1e89f182e51bc5a4fcda3d42d83b8fb4474ca525fa7a8db5081f3992
+  sha256: 4d5597fde8511e8fe4e4d1fd7adfc7ab37ff41ac68c76a746f7487d7b106d168
 
 build:
   merge_build_host: True  # [win]
-  number: 1002
+  number: 0
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
