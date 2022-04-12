@@ -1,4 +1,4 @@
-{% set version = '0.8.8' %}
+{% set version = "0.8.9" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/reshape_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/reshape/reshape_{{ version }}.tar.gz
-  sha256: 4d5597fde8511e8fe4e4d1fd7adfc7ab37ff41ac68c76a746f7487d7b106d168
+  sha256: 791178b3b5f30c166ebf5910a5ab1c67b54e7023b10b6c2e2ddd1cc02a1e4048
 
 build:
-  merge_build_host: True  # [win]
-  number: 3
+  merge_build_host: true  # [win]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -41,7 +41,7 @@ about:
   summary: 'Flexibly restructure and aggregate data using just two functions: melt and cast.'
   license_family: MIT
   license_file:
-    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/MIT'
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/MIT
     - LICENSE
 
 extra:
